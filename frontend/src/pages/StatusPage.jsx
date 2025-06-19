@@ -1,0 +1,27 @@
+import React from 'react';
+import './StatusPage.css';
+
+function StatusPage({ xp, level }) {
+  return (
+    <div className="page status-page">
+      <h2>Status</h2>
+      <div className="status-card">
+        <img src="https://i.imgur.com/dtE9A7r.png" alt="avatar" className="avatar" />
+        <h3>Sir Tasks-a-lot</h3>
+        <p>Level {level}</p>
+        <div className="xp-bar">
+          <div className="progress" style={{ width: `${xp % 100}%` }}></div>
+        </div>
+        <p>{xp} XP</p>
+        <h4>Equipped Items</h4>
+        <div className="items">
+          <span>🔪</span>
+          <span>🎭</span>
+          <span>🐉</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default StatusPage;
