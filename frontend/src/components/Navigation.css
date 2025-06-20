@@ -5,10 +5,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: purple;
+  background: #4a148c;
   color: white;
-  padding: 10px 0;
+  padding: 12px 0;
   z-index: 100;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .nav a {
@@ -16,7 +17,7 @@
   text-decoration: none;
   flex: 1;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .nav a.active {
