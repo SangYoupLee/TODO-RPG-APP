@@ -11,11 +11,11 @@ function TaskPage({ tasks, completeTask }) {
 
   return (
     <div className="page">
-      <h2>퀘스트 목록</h2>
+      <h2 className="shadow-xl">퀘스트 목록</h2>
       <div className="filter-buttons">
-        <button onClick={() => setDifficultyFilter('All')}>All</button>
-        <button onClick={() => setDifficultyFilter('Easy')}>Easy</button>
-        <button onClick={() => setDifficultyFilter('Hard')}>Hard</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('All')}>All</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('Easy')}>Easy</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('Hard')}>Hard</button>
       </div>
       {filteredTasks.map((task) => (
         <MonsterCard key={task.id} task={task} onComplete={completeTask} />
