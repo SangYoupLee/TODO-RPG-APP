@@ -10,6 +10,9 @@ function TaskPage({ tasks, completeTask }) {
     (task) =>
       (difficultyFilter === 'All' || task.difficulty === difficultyFilter) &&
       (typeFilter === 'All' || task.type === typeFilter.toLowerCase())
+
+  const filteredTasks = tasks.filter(
+    (task) => difficultyFilter === 'All' || task.difficulty === difficultyFilter
   );
 
   return (

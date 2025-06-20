@@ -10,6 +10,7 @@ function MyPage({ xp, level, completed, setTheme, theme, coins }) {
         <p>Level {level}</p>
         <p>{xp}/100 XP</p>
         <p>{coins} coins</p>
+          <p>{xp}/100 XP</p>
       </div>
       <div className="history-card">
         <h4>Completed Quests</h4>

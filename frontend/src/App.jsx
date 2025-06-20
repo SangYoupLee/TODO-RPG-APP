@@ -66,6 +66,9 @@ function App() {
         return totalXp % 100;
       });
       setCompleted(prev => [...prev, task]);
+        }
+        return totalXp % 100;
+      });
       toast.success(`✨ ${task.title} defeated! XP +${task.xp}!`);
     }
     setTasks(prev => prev.filter(t => t.id !== id));
@@ -79,6 +82,7 @@ function App() {
           <Route path="/" element={<TaskPage tasks={tasks} completeTask={completeTask} />} />
           <Route path="/status" element={<StatusPage xp={xp} level={level} />} />
           <Route path="/mypage" element={<MyPage xp={xp} level={level} completed={completed} setTheme={setTheme} theme={theme} coins={coins} />} />
+          <Route path="/mypage" element={<MyPage xp={xp} level={level} />} />
           <Route path="/create" element={<CreateTaskPage addTask={addTask} />} />
         </Routes>
         <HUD level={level} xp={xp} coins={coins} />
