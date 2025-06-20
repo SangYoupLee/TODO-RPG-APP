@@ -9,7 +9,7 @@ function MonsterCard({ task, onComplete }) {
         <p>난이도: {task.difficulty}</p>
         <p>XP: +{task.xp}</p>
       </div>
-      <button className="slay-button" onClick={() => onComplete(task.id)}>⚔️ 처치</button>
+      <button className="slay-button hover:scale-105" onClick={() => onComplete(task.id)}>⚔️ 처치</button>
     </div>
   );
 }
