@@ -32,3 +32,11 @@
 .history-card p {
   margin: 8px 0;
 }
+
+.history-card select {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}

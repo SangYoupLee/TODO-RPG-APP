@@ -5,11 +5,12 @@ import './CreateTaskPage.css';
 function CreateTaskPage({ addTask }) {
   const [title, setTitle] = useState('');
   const [difficulty, setDifficulty] = useState('Easy');
+  const [type, setType] = useState('daily');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask({ title, difficulty });
+    addTask({ title, difficulty, type });
     navigate('/');
   };
 
@@ -25,6 +26,12 @@ function CreateTaskPage({ addTask }) {
           <option>Easy</option>
           <option>Medium</option>
           <option>Hard</option>
+        </select>
+
+        <label>Type</label>
+        <select value={type} onChange={e => setType(e.target.value)}>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
         </select>
 
         <button type="submit">Add Task</button>
