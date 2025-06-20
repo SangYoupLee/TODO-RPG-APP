@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MonsterCard from '../components/MonsterCard';
 import './TaskPage.css';
 
 function TaskPage({ tasks, completeTask }) {
+  const [difficultyFilter, setDifficultyFilter] = useState('All');
+
+  const filteredTasks = tasks.filter(
+    (task) => difficultyFilter === 'All' || task.difficulty === difficultyFilter
+  );
+
   return (
     <div className="page">
-      <h2>퀘스트 목록</h2>
-      {tasks.map(task => (
+      <h2 className="shadow-xl">퀘스트 목록</h2>
+      <div className="filter-buttons">
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('All')}>All</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('Easy')}>Easy</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('Hard')}>Hard</button>
+      </div>
+      {filteredTasks.map((task) => (
         <MonsterCard key={task.id} task={task} onComplete={completeTask} />
       ))}
     </div>

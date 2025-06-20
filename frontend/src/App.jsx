@@ -39,7 +39,7 @@ function App() {
         }
         return totalXp % 100;
       });
-      toast.success(`+${task.xp} XP! 건타 처치: ${task.title}`);
+      toast.success(`✨ ${task.title} defeated! XP +${task.xp}!`);
     }
     setTasks(prev => prev.filter(t => t.id !== id));
   };
