@@ -66,13 +66,11 @@ function App() {
         return totalXp % 100;
       });
       setCompleted(prev => [...prev, task]);
-        }
-        return totalXp % 100;
-      });
       toast.success(`✨ ${task.title} defeated! XP +${task.xp}!`);
     }
     setTasks(prev => prev.filter(t => t.id !== id));
   };
+
 
 
   return (

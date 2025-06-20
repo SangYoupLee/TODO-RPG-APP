@@ -6,15 +6,13 @@ function TaskPage({ tasks, completeTask }) {
   const [difficultyFilter, setDifficultyFilter] = useState('All');
   const [typeFilter, setTypeFilter] = useState('All');
 
-  const filteredTasks = tasks.filter(
-    (task) =>
-      (difficultyFilter === 'All' || task.difficulty === difficultyFilter) &&
-      (typeFilter === 'All' || task.type === typeFilter.toLowerCase())
-
-  const filteredTasks = tasks.filter(
-    (task) => difficultyFilter === 'All' || task.difficulty === difficultyFilter
-  );
-
+  const filteredTasks = tasks
+    .filter((task) =>
+      difficultyFilter === 'All' ? true : task.difficulty === difficultyFilter
+    )
+    .filter((task) =>
+      typeFilter === 'All' ? true : task.type === typeFilter.toLowerCase()
+    );
   return (
     <div className="page">
       <h2 className="shadow-xl">퀘스트 목록</h2>
