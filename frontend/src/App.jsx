@@ -18,9 +18,13 @@ function App() {
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
   const [coins, setCoins] = useState(0);
+  const [stats, setStats] = useState({ STR: 1, DEX: 1, INT: 1, VIT: 1 });
+  const [statPoints, setStatPoints] = useState(0);
   const [completed, setCompleted] = useState([]);
   const [theme, setTheme] = useState('dark');
   const prevLevel = useRef(1);
+  const maxHp = 100 + stats.VIT * 10;
+  const hp = maxHp;
 
   useEffect(() => {
     document.body.className = `theme-${theme}`;
@@ -51,6 +55,12 @@ function App() {
     }
   };
 
+  const allocateStat = (key) => {
+    if (statPoints <= 0) return;
+    setStats(prev => ({ ...prev, [key]: prev[key] + 1 }));
+    setStatPoints(prev => prev - 1);
+  };
+
   const completeTask = (id) => {
     const task = tasks.find(t => t.id === id);
     if (task) {
@@ -61,6 +71,7 @@ function App() {
         const levelUps = Math.floor(totalXp / 100);
         if (levelUps > 0) {
           setLevel(prev => prev + levelUps);
+          setStatPoints(prev => prev + levelUps * 5);
           window.confetti && window.confetti();
         }
         return totalXp % 100;
@@ -78,12 +89,12 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<TaskPage tasks={tasks} completeTask={completeTask} />} />
-          <Route path="/status" element={<StatusPage xp={xp} level={level} />} />
+          <Route path="/status" element={<StatusPage xp={xp} level={level} stats={stats} statPoints={statPoints} allocateStat={allocateStat} />} />
           <Route path="/mypage" element={<MyPage xp={xp} level={level} completed={completed} setTheme={setTheme} theme={theme} coins={coins} />} />
           <Route path="/mypage" element={<MyPage xp={xp} level={level} />} />
           <Route path="/create" element={<CreateTaskPage addTask={addTask} />} />
         </Routes>
-        <HUD level={level} xp={xp} coins={coins} />
+        <HUD level={level} xp={xp} coins={coins} hp={hp} maxHp={maxHp} />
         <FloatingAddButton />
         <Navigation />
         <ToastContainer position="bottom-center" autoClose={1500} hideProgressBar={true} />
