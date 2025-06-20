@@ -36,3 +36,13 @@
 .items span {
   font-size: 24px;
 }
+
+.stats div {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.stats button {
+  padding: 0 6px;
+}

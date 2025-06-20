@@ -1,3 +1,4 @@
 .hud {
   z-index: 200;
+  color: var(--font-color);
 }
