@@ -15,6 +15,7 @@ function App() {
     { id: 2, title: 'Troll Blockade', difficulty: 'Hard', xp: 100, type: 'weekly' }
   ]);
   const [xp, setXp] = useState(0);
+  const [level, setLevel] = useState(1);
 
   const addTask = (task) => {
     const xpMap = { Easy: 50, Medium: 75, Hard: 100 };
@@ -30,21 +31,27 @@ function App() {
   const completeTask = (id) => {
     const task = tasks.find(t => t.id === id);
     if (task) {
-      setXp(prev => prev + task.xp);
-      toast.success(`+${task.xp} XP! 건타 처치: ${task.title}`);
+      setXp(prevXp => {
+        const totalXp = prevXp + task.xp;
+        const levelUps = Math.floor(totalXp / 100);
+        if (levelUps > 0) {
+          setLevel(prev => prev + levelUps);
+        }
+        return totalXp % 100;
+      });
+      toast.success(`✨ ${task.title} defeated! XP +${task.xp}!`);
     }
     setTasks(prev => prev.filter(t => t.id !== id));
   };
 
-  const calculateLevel = (xp) => Math.floor(xp / 100) + 1;
 
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<TaskPage tasks={tasks} completeTask={completeTask} />} />
-          <Route path="/status" element={<StatusPage xp={xp} level={calculateLevel(xp)} />} />
-          <Route path="/mypage" element={<MyPage xp={xp} level={calculateLevel(xp)} />} />
+          <Route path="/status" element={<StatusPage xp={xp} level={level} />} />
+          <Route path="/mypage" element={<MyPage xp={xp} level={level} />} />
           <Route path="/create" element={<CreateTaskPage addTask={addTask} />} />
         </Routes>
         <FloatingAddButton />

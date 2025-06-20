@@ -8,7 +8,7 @@ function MyPage({ xp, level }) {
       <div className="status-card">
         <h3>Warrior John</h3>
         <p>Level {level}</p>
-        <p>{xp} XP accumulated</p>
+          <p>{xp}/100 XP</p>
       </div>
       <div className="history-card">
         <h4>Completed Tasks</h4>
