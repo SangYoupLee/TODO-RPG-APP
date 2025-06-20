@@ -10,9 +10,9 @@ function StatusPage({ xp, level }) {
         <h3>Sir Tasks-a-lot</h3>
         <p>Level {level}</p>
         <div className="xp-bar">
-          <div className="progress" style={{ width: `${xp % 100}%` }}></div>
+          <div className="progress" style={{ width: `${xp}%` }}></div>
         </div>
-        <p>{xp} XP</p>
+        <p>{xp}/100 XP</p>
         <h4>Equipped Items</h4>
         <div className="items">
           <span>🔪</span>
