@@ -1,5 +1,6 @@
 import React from 'react';
 import './MyPage.css';
+import { getRequiredXP } from '../utils/experience';
 
 function MyPage({ xp, level, completed, setTheme, theme, coins }) {
   return (
@@ -8,9 +9,8 @@ function MyPage({ xp, level, completed, setTheme, theme, coins }) {
       <div className="status-card">
         <h3>Warrior John</h3>
         <p>Level {level}</p>
-        <p>{xp}/100 XP</p>
+        <p>{xp}/{getRequiredXP(level)} XP</p>
         <p>{coins} coins</p>
-          <p>{xp}/100 XP</p>
       </div>
       <div className="history-card">
         <h4>Completed Quests</h4>

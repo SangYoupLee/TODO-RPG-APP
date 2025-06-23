@@ -1,4 +1,5 @@
 import React from 'react';
+import { getRequiredXP } from '../utils/experience';
 import './StatusPage.css';
 
 function StatusPage({ xp, level, stats, statPoints, allocateStat }) {
@@ -10,9 +11,9 @@ function StatusPage({ xp, level, stats, statPoints, allocateStat }) {
         <h3>Sir Tasks-a-lot</h3>
         <p>Level {level}</p>
         <div className="xp-bar">
-          <div className="progress" style={{ width: `${xp}%` }}></div>
+          <div className="progress" style={{ width: `${(xp / getRequiredXP(level)) * 100}%` }}></div>
         </div>
-        <p>{xp}/100 XP</p>
+        <p>{xp}/{getRequiredXP(level)} XP</p>
         <p>Stat Points: {statPoints}</p>
         <div className="stats">
           {['STR','DEX','INT','VIT'].map(key => (

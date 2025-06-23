@@ -1,4 +1,5 @@
 import React from 'react';
+import { getRequiredXP } from '../utils/experience';
 import './HUD.css';
 
 function HUD({ level, xp, coins, hp, maxHp }) {
@@ -7,7 +8,7 @@ function HUD({ level, xp, coins, hp, maxHp }) {
       <div>HP {hp}/{maxHp}</div>
       <div>Lvl {level}</div>
       <div className="hud-bar flex-1 mx-2 bg-gray-700 rounded h-2">
-        <div className="bg-purple-500 h-2 rounded" style={{ width: `${xp}%` }}></div>
+        <div className="bg-purple-500 h-2 rounded" style={{ width: `${(xp / getRequiredXP(level)) * 100}%` }}></div>
       </div>
       <div>{coins}💰</div>
     </div>
