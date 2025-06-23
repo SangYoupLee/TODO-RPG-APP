@@ -43,7 +43,7 @@ function App() {
     setTasks(prev => [...prev, newTask]);
   };
 
-  const playDing = () => {
+  const playSuccessSound = () => {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
@@ -66,7 +66,7 @@ function App() {
   const completeTask = (id) => {
     const task = tasks.find(t => t.id === id);
     if (task) {
-      playDing();
+      playSuccessSound();
       setCoins(prev => prev + task.xp / 10);
       setXp(prevXp => {
         let newXp = prevXp + task.xp;
