@@ -32,6 +32,7 @@ function CreateTaskPage({ addTask }) {
         <select value={type} onChange={e => setType(e.target.value)}>
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
+          <option value="one-time">One-Time</option>
         </select>
 
         <button type="submit">Add Task</button>
