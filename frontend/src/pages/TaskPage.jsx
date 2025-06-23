@@ -19,12 +19,14 @@ function TaskPage({ tasks, completeTask }) {
       <div className="filter-buttons">
         <button className="hover:scale-105" onClick={() => setDifficultyFilter('All')}>All</button>
         <button className="hover:scale-105" onClick={() => setDifficultyFilter('Easy')}>Easy</button>
+        <button className="hover:scale-105" onClick={() => setDifficultyFilter('Medium')}>Medium</button>
         <button className="hover:scale-105" onClick={() => setDifficultyFilter('Hard')}>Hard</button>
       </div>
       <div className="filter-buttons">
         <button className="hover:scale-105" onClick={() => setTypeFilter('All')}>All</button>
         <button className="hover:scale-105" onClick={() => setTypeFilter('Daily')}>Daily</button>
         <button className="hover:scale-105" onClick={() => setTypeFilter('Weekly')}>Weekly</button>
+        <button className="hover:scale-105" onClick={() => setTypeFilter('One-Time')}>One-Time</button>
       </div>
       {filteredTasks.map((task) => (
         <MonsterCard key={task.id} task={task} onComplete={completeTask} />
