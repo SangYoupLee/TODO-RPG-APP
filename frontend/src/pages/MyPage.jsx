@@ -11,7 +11,6 @@ function MyPage({ xp, level, completed, setTheme, theme, coins }) {
         <h3>Warrior John</h3>
         <p>Level {level}</p>
         <XPBar xp={xp} level={level} />
-        <p>{xp}/{getRequiredXP(level)} XP</p>
         <p>{coins} coins</p>
       </div>
       <div className="history-card">
